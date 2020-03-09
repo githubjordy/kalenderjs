@@ -1,8 +1,8 @@
 
-//let StartDate = new Date(2020,1,24);
-let StartDate = new Date(2019,11,24);
-let CurrentDate = new Date(2020,0,7);
-//let CurrentDate = new Date();
+let StartDate = new Date(2020,1,24);
+//let StartDate = new Date(2019,11,24);
+//let CurrentDate = new Date(2020,0,7);
+let CurrentDate = new Date();
 document.getElementById("openit").addEventListener("click",function(){
     this.style.display="none";
     document.getElementById("myform").style.display="none";
@@ -10,13 +10,14 @@ document.getElementById("openit").addEventListener("click",function(){
 var months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
 document.getElementsByClassName("DateButton")[1].addEventListener("click",function(){next()});
 document.getElementsByClassName("DateButton")[0].addEventListener("click",function(){previous()});
-/*while(StartDate< CurrentDate){
+while(StartDate< CurrentDate){
  StartDate.setDate(StartDate.getDate()+28);
 
 
 }
 
-StartDate.setDate(StartDate.getDate()-28);*/
+StartDate.setDate(StartDate.getDate()-28);
+
 let WorkingDate =StartDate;
 
 // all grid items
@@ -94,12 +95,7 @@ function previous(){
      
      
       } 
-      console.log(WorkingDate);
-      console.log(CurrentDate);
-      console.log(WorkingDate.getFullYear());
-      console.log(CurrentDate.getFullYear());
-      console.log(WorkingDate.getMonth());
-      console.log(CurrentDate.getMonth());
+      
       if(contains){
         document.getElementById("headertext").innerHTML = `Agenda ${CurrentDate.getFullYear()}`;}  
        
@@ -136,12 +132,7 @@ function next(){
         
      
       } 
-      console.log(WorkingDate);
-      console.log(CurrentDate);
-      console.log(WorkingDate.getFullYear());
-      console.log(CurrentDate.getFullYear());
-      console.log(WorkingDate.getMonth());
-      console.log(CurrentDate.getMonth());
+      
       //debugger;
       if(contains){
         document.getElementById("headertext").innerHTML = `Agenda ${CurrentDate.getFullYear()}`;}  
