@@ -1,6 +1,12 @@
 
-let StartDate = new Date(2020,1,24);
-let CurrentDate = new Date();
+//let StartDate = new Date(2020,1,24);
+let StartDate = new Date(2019,11,24);
+let CurrentDate = new Date(2020,0,7);
+//let CurrentDate = new Date();
+document.getElementById("openit").addEventListener("click",function(){
+    this.style.display="none";
+    document.getElementById("myform").style.display="none";
+})
 var months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
 document.getElementsByClassName("DateButton")[1].addEventListener("click",function(){next()});
 document.getElementsByClassName("DateButton")[0].addEventListener("click",function(){previous()});
@@ -15,7 +21,7 @@ let WorkingDate =StartDate;
 
 // all grid items
 let items = document.getElementsByClassName("grid-item");
-document.getElementById("headertext").innerHTML = `Agenda ${WorkingDate.getFullYear()}`;
+//document.getElementById("headertext").innerHTML = `Agenda ${WorkingDate.getFullYear()}`;
 //document.getElementById("CurrentDateView").innerHTML= new Date().getMonth;
 
 
@@ -27,11 +33,16 @@ FirstOpen();
 function FirstOpen(){
      
     for (i = 0; i < 28; i++) {
-        
-        if(WorkingDate.getMonth()==0 && WorkingDate.getDate()==1){
-            document.getElementById("headertext").innerHTML = `Agenda ${WorkingDate.getFullYear()}`;
-        }
 
+        items[i].onclick=(function () {
+            let IndexOfElement =i
+            return function () {let number = IndexOfElement;
+            document.getElementById("openit").style.display = "block";
+            document.getElementById("myform").style.display="block";
+            alert(number);
+            return number;}
+          })();
+  
         if(WorkingDate.getMonth()==CurrentDate.getMonth() && WorkingDate.getDate()==CurrentDate.getDate()
         && WorkingDate.getFullYear()==CurrentDate.getFullYear()){
             
@@ -47,19 +58,19 @@ function FirstOpen(){
         WorkingDate.setDate(WorkingDate.getDate()+1);   
      
     } 
-
+   
+    if(CurrentDate.getFullYear()!=WorkingDate.getFullYear()&& CurrentDate.getMonth()!=11){
+        document.getElementById("headertext").innerHTML = `Agenda ${WorkingDate.getFullYear()}`;}
+        else{
+        document.getElementById("headertext").innerHTML = `Agenda ${CurrentDate.getFullYear()}`;}  
+        
 }
 function previous(){
 
     WorkingDate.setDate(WorkingDate.getDate()-56);
-
+    let contains=false;
     for (i = 0; i < 28; i++) {
-        console.log(WorkingDate.getMonth());
-        console.log(WorkingDate.getDate());
-        if(WorkingDate.getMonth()==11 && WorkingDate.getDate()==4){
-            document.getElementById("headertext").innerHTML = `Agenda ${WorkingDate.getFullYear()}`;
-        }
-
+       
         if(items[i].style.backgroundColor=="gray"){
             items[i].style.background = "rgba(255, 255, 255, 0.8)";
         }
@@ -68,6 +79,7 @@ function previous(){
         if(WorkingDate.getMonth()==CurrentDate.getMonth() && WorkingDate.getDate()==CurrentDate.getDate()
         && WorkingDate.getFullYear()==CurrentDate.getFullYear()){
             items[i].style.background = "gray";
+            contains =true;
         }
         if(WorkingDate.getMonth()!=CurrentDate.getMonth()||WorkingDate.getFullYear()!=CurrentDate.getFullYear()){
             items[i].style.color = "gray";
@@ -82,17 +94,26 @@ function previous(){
      
      
       } 
+      console.log(WorkingDate);
+      console.log(CurrentDate);
+      console.log(WorkingDate.getFullYear());
+      console.log(CurrentDate.getFullYear());
+      console.log(WorkingDate.getMonth());
+      console.log(CurrentDate.getMonth());
+      if(contains){
+        document.getElementById("headertext").innerHTML = `Agenda ${CurrentDate.getFullYear()}`;}  
+       
+     else{
+        document.getElementById("headertext").innerHTML = `Agenda ${WorkingDate.getFullYear()}`;} 
+        
+        
 }
 
 
 function next(){
-  
+  let contains = false;
     for (i = 0; i < 28; i++) {
 
-
-        if(WorkingDate.getMonth()==0 && WorkingDate.getDate()==1){
-            document.getElementById("headertext").innerHTML = `Agenda ${WorkingDate.getFullYear()}`;
-        }
 
         if(items[i].style.backgroundColor=="gray"){
             items[i].style.background = "rgba(255, 255, 255, 0.8)";
@@ -102,6 +123,7 @@ function next(){
         if(WorkingDate.getMonth()==CurrentDate.getMonth() && WorkingDate.getDate()==CurrentDate.getDate()
         && WorkingDate.getFullYear()==CurrentDate.getFullYear()){
             items[i].style.background = "gray";
+            contains =true;
         }
         if(WorkingDate.getMonth()!=CurrentDate.getMonth()||WorkingDate.getFullYear()!=CurrentDate.getFullYear()){
             items[i].style.color = "gray";
@@ -112,15 +134,20 @@ function next(){
         items[i].innerHTML= months[WorkingDate.getMonth()]+" " +WorkingDate.getDate();
         WorkingDate.setDate(WorkingDate.getDate()+1); 
         
-       
-
-       /* console.log(WorkingDate);
-        WorkingDate.setDate(WorkingDate.getDate()+1);     
-        if(WorkingDate.getDate()==CurrentDate.getDate()){
-            console.log("yes");
-        };*/
-        
-     
      
       } 
+      console.log(WorkingDate);
+      console.log(CurrentDate);
+      console.log(WorkingDate.getFullYear());
+      console.log(CurrentDate.getFullYear());
+      console.log(WorkingDate.getMonth());
+      console.log(CurrentDate.getMonth());
+      //debugger;
+      if(contains){
+        document.getElementById("headertext").innerHTML = `Agenda ${CurrentDate.getFullYear()}`;}  
+       
+     else{
+        document.getElementById("headertext").innerHTML = `Agenda ${WorkingDate.getFullYear()}`;} 
+        
+      
 }

@@ -33,8 +33,8 @@ var x = document.getElementsByClassName("example");
 
   //x[i].onclick = function(event) {alert(event.target.indexOf )};
   x[i].onclick=(function () {
-  let n = i;
-  return function () {let number = n;
+  //let n =i
+  return function () {let number = i;
   alert(number);
   return number;}
 })();

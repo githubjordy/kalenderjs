@@ -15,6 +15,19 @@
 
 </header>
 
+
+
+<form action="welcome.php" method="post" id="myform">
+        Name:<br>
+        <input type="text" id ="myinput" name="name"><br><br>
+
+        Message:<br>
+        <textarea id="mytextarea" rows="4" cols="50"> ddfd</textarea> <br><br>       
+
+        <input type="submit"value="Maak Afspraak!">
+</form>
+
+<div id="openit"></div>
 <div class="grid-container">
     <div class="grid-item-header">Maandag</div>
     <div class="grid-item-header">Dinsdag</div>
